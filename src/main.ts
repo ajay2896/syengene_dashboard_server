@@ -14,7 +14,7 @@ async function bootstrap() {
     .addTag('Syengene')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('SyengeneApi', app, document);
   /*============= Implementing Swagger For API Documentation END ==================*/
 
   await app.listen(process.env.SERVER_PORT);
