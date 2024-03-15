@@ -1,12 +1,18 @@
 
-// import { DataTypeTime } from "sequelize";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+
+
+
+
+
+
+
+import { Column, Model, Table } from "sequelize-typescript";
 
 @Table({
     freezeTableName: true,
     timestamps: false
 })
-export class userReportEntryExit extends Model {
+export class userReportSub extends Model {
 
     @Column
     Username: string;
@@ -18,7 +24,7 @@ export class userReportEntryExit extends Model {
     Lastname: string;
 
     @Column
-    Overall_Score:string;
+    Overallscore:string;
 
     @Column
     Summary: string;
@@ -28,7 +34,7 @@ export class userReportEntryExit extends Model {
     })
     date_time: string;
 
-    @Column
-    Module: string;
+    // @Column
+    // Module: string;
 
 }

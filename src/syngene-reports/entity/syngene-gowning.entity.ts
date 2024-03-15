@@ -1,12 +1,15 @@
 
-// import { DataTypeTime } from "sequelize";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+
+
+
+
+import { Column, Model, Table } from "sequelize-typescript";
 
 @Table({
     freezeTableName: true,
     timestamps: false
 })
-export class userReportEntryExit extends Model {
+export class userReportPrimaryModule extends Model {
 
     @Column
     Username: string;

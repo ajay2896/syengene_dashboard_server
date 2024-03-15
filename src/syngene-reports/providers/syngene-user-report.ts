@@ -1,12 +1,21 @@
 
 
-
-// import { DataSource } from 'typeorm';
-import { UserReport_EntryExit } from '../entity/syngene-entery-exist-user-report.entity';
+import { userReportEntryExit } from '../entity/syngene-entery-exist-user-report.entity';
+import { userReportPrimaryModule } from '../entity/syngene-gowning.entity';
+import { userReportSub } from '../entity/syngene-sub.entity';
 
 export const UserReportEntryExitProviders = [
   {
-    provide: 'UserReport_EntryExit',
-    useValue: UserReport_EntryExit
+    provide: 'userReportEntryExit',
+    useValue: userReportEntryExit
+  },
+  {
+    provide: 'userReportPrimaryModule',
+    useValue: userReportPrimaryModule
+  },
+  {
+    provide: 'userReportSub',
+    useValue: userReportSub
   }
+  
 ]

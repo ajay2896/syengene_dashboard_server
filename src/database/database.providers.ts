@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
-import { UserReport_EntryExit } from 'src/syngene-reports/entity/syngene-entery-exist-user-report.entity';
+import { userReportEntryExit } from 'src/syngene-reports/entity/syngene-entery-exist-user-report.entity';
+import { userReportPrimaryModule } from 'src/syngene-reports/entity/syngene-gowning.entity';
+import { userReportSub } from 'src/syngene-reports/entity/syngene-sub.entity';
 
 /**
  * SEQUELIZE variable is stored in a file named
@@ -12,17 +14,13 @@ export const databaseProviders = [
         provide: 'SEQUELIZE',
         useFactory: async () => {
             const sequelize = new Sequelize({
-
                 dialect: 'mssql',
                 host: process.env.DB_HOST_URI,
                 port: +process.env.DB_PORT,
                 username: process.env.DB_USERNAME,
                 password: process.env.DB_PASSWORD,
                 database: process.env.DB_NAME,
-                // autoLoadEntities:true,
-                // synchronize: true, //use this with development enviroment
-                // options: { trustServerCertificate: true }
-            });
+            })
 
             /**
              * Add Models Here
@@ -30,9 +28,12 @@ export const databaseProviders = [
              * You can add the models to
              * Sequelize later on.
              */
-            sequelize.addModels([UserReport_EntryExit]);
+            sequelize.addModels([
+                userReportEntryExit,
+                userReportPrimaryModule,
+                userReportSub
+            ]);
             await sequelize.sync();
-            // await sequelize.sync();
             return sequelize;
         },
     },

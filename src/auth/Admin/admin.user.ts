@@ -7,6 +7,6 @@ export const admin = {
     "role":"admin"
 }
 
-export const constants = {
+export const jwtConstants = {
     JWT_SECRET_ID:"Syngene@1234546789"
 }

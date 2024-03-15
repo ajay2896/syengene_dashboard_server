@@ -8,12 +8,12 @@ export class AuthService {
 
     constructor(
         private jwtService: JwtService
-    ) {}
+    ) { }
 
-    async loginUserService(loginData:LoginDTO): Promise<{ access_token: string }> {
+    async loginUserService(loginData: LoginDTO): Promise<{ access_token: string, success:boolean,message:string }> {
         try {
-            
-            if(loginData.userName === admin.userName && loginData.password === admin.password) {
+
+            if (loginData.userName === admin.userName && loginData.password === admin.password) {
 
 
                 const payload = { userName: admin.userName, role: admin.role };
@@ -21,17 +21,18 @@ export class AuthService {
                 const token = await this.jwtService.signAsync(payload);
 
                 return {
+                    success:true,
+                    message:"Successfully login",
                     access_token: token
                 }
 
             } else {
-                throw new UnauthorizedException({statusCode:406,success:false,message:"Invalid username or password"});
+                throw new UnauthorizedException({ statusCode: 406, success: false, message: "Invalid username or password" });
             }
 
         } catch (error) {
-            throw new InternalServerErrorException({statusCode:error.status,success:false,message:error.message});
+            throw new InternalServerErrorException({ statusCode: error.status, success: false, message: error.message });
         }
     }
-
 
 }
