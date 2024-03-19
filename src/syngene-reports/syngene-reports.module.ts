@@ -10,7 +10,9 @@ import { AuthModule } from 'src/auth/auth.module';
     AuthModule,
     DatabaseModule,
   ],
-  controllers: [SyngeneReportsController],
+  controllers: [
+    SyngeneReportsController
+  ],
   providers: [
     SyngeneReportsService,
     ...UserReportEntryExitProviders

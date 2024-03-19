@@ -9,6 +9,9 @@ export class AuthController {
         private readonly authService:AuthService
     ) {}
 
+    /* This code snippet is defining a POST endpoint for the '/auth/login' route in a NestJS
+    controller. The `@Post('login')` decorator specifies that this method should be called when a
+    POST request is made to the '/auth/login' route. */
     @Post('login')
     loginUser(@Body() body:LoginDTO) {
 

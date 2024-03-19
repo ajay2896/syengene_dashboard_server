@@ -11,7 +11,12 @@ export class SyngeneReportsController {
         private readonly syngeneReportsService:SyngeneReportsService
     ) {}
 
-
+    /* This code snippet is defining a GET endpoint in a NestJS controller. The endpoint is
+    '/syngene-reports/getEntryExitData' and it is mapped to the `findAllData` method. This method
+    takes a query parameter of type `EntryExitDTO` using the `@Query()` decorator. Inside the
+    method, it calls the `findEntryExitDataService` method from the `SyngeneReportsService` class
+    passing the query parameter. Finally, the result of this service method is returned as the
+    response for this endpoint. */
     @Get('getEntryExitData')
     findAllData(@Query() query:EntryExitDTO) {
 
@@ -19,6 +24,12 @@ export class SyngeneReportsController {
 
     }
 
+    /* This code snippet defines a GET endpoint in a NestJS controller. The endpoint is
+    '/syngene-reports/getGowningData' and it is mapped to the `getGowningAllData` method. This
+    method takes a query parameter of type `EntryExitDTO` using the `@Query()` decorator. Inside the
+    method, it calls the `findGowningReportService` method from the `SyngeneReportsService` class
+    passing the query parameter. Finally, the result of this service method is returned as the
+    response for this endpoint. */
     @Get('getGowningData')
     getGowningAllData(@Query() query:EntryExitDTO) {
 
@@ -26,6 +37,12 @@ export class SyngeneReportsController {
 
     }
 
+    /* This code snippet defines a GET endpoint in a NestJS controller. The endpoint is
+    '/syngene-reports/getSubData' and it is mapped to the `getSyngeneSubAllData` method. This method
+    takes a query parameter of type `EntryExitDTO` using the `@Query()` decorator. Inside the
+    method, it calls the `findSyngeneSubData` method from the `SyngeneReportsService` class passing
+    the query parameter. Finally, the result of this service method is returned as the response for
+    this endpoint. */
     @Get('getSubData')
     getSyngeneSubAllData(@Query() query:EntryExitDTO) {
 
@@ -33,13 +50,15 @@ export class SyngeneReportsController {
 
     }
 
-    @Post('createUser')
-    craeteData(@Body() body) {
+    @Get('getAllSubUserData')
+    getUserData(@Query() query:EntryExitDTO) {
 
-        return this.syngeneReportsService.createData(body);
+        return this.syngeneReportsService.findSyngeneSubUser(query);
 
     }
 
+    /* This code snippet defines a GET endpoint in a NestJS controller. The endpoint is
+    '/syngene-reports/countActiveUsers' and it is mapped to the `getActiveUsers` method. */
     @Get('countActiveUsers')
     getActiveUsers() {
 
