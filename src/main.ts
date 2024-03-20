@@ -22,7 +22,7 @@ async function bootstrap() {
   SwaggerModule.setup('SyengeneApi', app, document);
   /*============= Implementing Swagger For API Documentation END ==================*/
 
-  await app.listen(process.env.SERVER_PORT);
+  await app.listen(process.env.APP_SERVER_PORT);
 
 }
 bootstrap();

@@ -2,6 +2,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { admin, jwtConstants } from '../Admin/admin.user';
+import { TokenExpiredError } from '@nestjs/jwt';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -27,6 +28,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
      */
     validate(payload: any) {
         try {
+            console.log("--Payload---", payload)
             const { userName, role } = payload;
 
             if (userName !== admin.userName && role !== admin.role) {
@@ -37,7 +39,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
             return payload;
         } catch (error) {
-            throw new Error(error.message)
+            if (error instanceof TokenExpiredError) {
+                throw new UnauthorizedException("Please login again....");
+            }
+            throw error;
         }
     }
 }
